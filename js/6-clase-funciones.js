@@ -28,12 +28,69 @@
     se le llama a la funcion: procedimiento.
 
     Existen en js tres tipos de funciones:
-    1- Funciones con nombre: Se definen utilizando la palabra clave function seguida de un nombre de función. Por ejemplo: function suma(a, b) { return a + b; }.
+    1- Funciones con nombre: Se definen utilizando la palabra clave function seguida de un nombre 
+    de función. Por ejemplo: function suma(a, b) { return a + b; }.
 
-    2- Funciones anónimas: Son funciones que no tienen un nombre asociado y se pueden asignar a variables o pasarse como argumentos a otras funciones. Por ejemplo: let suma = function(a, b) { return a + b; }.
+    2- Funciones anónimas: Son funciones que no tienen un nombre asociado y se pueden asignar a 
+    variables o pasarse como argumentos a otras funciones. Por ejemplo: 
+    let suma = function(a, b) { return a + b; }.
 
-    3- Funciones flecha (arrow functions): Son una forma más concisa de escribir funciones en JavaScript, introducidas en ECMAScript 6 (ES6). Por ejemplo: let suma = (a, b) => a + b;.
+    3- Funciones flecha (arrow functions): Son una forma más concisa de escribir funciones en 
+    JavaScript, introducidas en ECMAScript 6 (ES6). Por ejemplo: let suma = (a, b) => a + b;.
 
-    Metodos: Son funciones que están asociadas a objetos y se llaman utilizando la notación de punto. Por ejemplo: console.log(). el objeto es 'console' y el metodo es 'log()'
+    Metodos: Son funciones que están asociadas a objetos y se llaman utilizando la notación de punto. 
+    Por ejemplo: console.log(). el objeto es 'console' y el metodo es 'log()'
 
 */
+
+// pitagoras hipotenusa_al_cuadrado = cateto1_al_cuadrado + cateto2_al_cuadrado (paremetros - argumentos)
+
+function pitagoras (cateto1, cateto2){ //3, 4
+    // return (cateto1**2 + cateto2**2)**(1/2);
+    return Math.sqrt(Math.pow(cateto1, 2) + Math.pow(cateto2, 2));
+}
+
+let hipotenusa = pitagoras(3, 4);
+let hipotenusa2 = pitagoras(10, 5);
+let hipotenusa3 = pitagoras(7, 3);
+
+// console.log(cateto1); // no existe por fuera del dominio de la funcion
+
+console.log(`El valor de la hipotenusa 1: ${hipotenusa}`);
+console.log(`El valor de la hipotenusa 2: ${hipotenusa2}`);
+console.log(`El valor de la hipotenusa 3: ${hipotenusa3}`);
+
+let hipotenusa4 = (cateto1, cateto2) => {
+    return (cateto1**2 + cateto2**2)**(1/2);
+    // codigo aca abajo ya no se ejecuta porque finaliza con el return
+}
+
+console.log(`El valor de la hipotenusa 4: ${hipotenusa4(2,2)}`);
+
+// se tiene una nomina de 10000 empleados en una empresa, se desea crear una base de datos
+// que contenga la siguiente informacion:
+// nombre, salario basico, valor de la hora, genero
+// se requiere poder agregar, actualizar, eliminar y buscar los datos del empleado
+
+// valor de la hora? => salarioBasico / 188 (h/m)
+
+ // db con el conocimiento que tenemos a dia de hoy
+let empleados = []
+
+function agregarEmpleado(nombreParam, salarioBasicoParam, generoParam, cedula){
+    let empleado = {
+        nombre: nombreParam,
+        salarioBasico: salarioBasicoParam,
+        genero: generoParam,
+        cedula: cedula, 
+        valorHora: salarioBasicoParam / 188,
+    }
+    empleados.push(empleado);
+}
+
+agregarEmpleado("Ana", 4500000, "Feminino", 123);
+agregarEmpleado("Mayk", 2500000, "Masculino", 456);
+agregarEmpleado("Fred", 4500000, "Masculino", 789);
+agregarEmpleado("Dayana", 7500000, "Feminino", 999);
+
+console.log({empleados});
