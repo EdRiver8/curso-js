@@ -45,52 +45,125 @@
 
 // pitagoras hipotenusa_al_cuadrado = cateto1_al_cuadrado + cateto2_al_cuadrado (paremetros - argumentos)
 
-function pitagoras (cateto1, cateto2){ //3, 4
-    // return (cateto1**2 + cateto2**2)**(1/2);
-    return Math.sqrt(Math.pow(cateto1, 2) + Math.pow(cateto2, 2));
-}
+// function pitagoras (cateto1, cateto2){ //3, 4
+//     // return (cateto1**2 + cateto2**2)**(1/2);
+//     return Math.sqrt(Math.pow(cateto1, 2) + Math.pow(cateto2, 2));
+// }
 
-let hipotenusa = pitagoras(3, 4);
-let hipotenusa2 = pitagoras(10, 5);
-let hipotenusa3 = pitagoras(7, 3);
+// let hipotenusa = pitagoras(3, 4);
+// let hipotenusa2 = pitagoras(10, 5);
+// let hipotenusa3 = pitagoras(7, 3);
 
 // console.log(cateto1); // no existe por fuera del dominio de la funcion
 
-console.log(`El valor de la hipotenusa 1: ${hipotenusa}`);
-console.log(`El valor de la hipotenusa 2: ${hipotenusa2}`);
-console.log(`El valor de la hipotenusa 3: ${hipotenusa3}`);
+// console.log(`El valor de la hipotenusa 1: ${hipotenusa}`);
+// console.log(`El valor de la hipotenusa 2: ${hipotenusa2}`);
+// console.log(`El valor de la hipotenusa 3: ${hipotenusa3}`);
 
-let hipotenusa4 = (cateto1, cateto2) => {
-    return (cateto1**2 + cateto2**2)**(1/2);
-    // codigo aca abajo ya no se ejecuta porque finaliza con el return
-}
+// let hipotenusa4 = (cateto1, cateto2) => {
+//     return (cateto1**2 + cateto2**2)**(1/2);
+//     // codigo aca abajo ya no se ejecuta porque finaliza con el return
+// }
 
-console.log(`El valor de la hipotenusa 4: ${hipotenusa4(2,2)}`);
+// console.log(`El valor de la hipotenusa 4: ${hipotenusa4(2,2)}`);
 
 // se tiene una nomina de 10000 empleados en una empresa, se desea crear una base de datos
 // que contenga la siguiente informacion:
 // nombre, salario basico, valor de la hora, genero
-// se requiere poder agregar, actualizar, eliminar y buscar los datos del empleado
+// se requiere poder agregar, actualizar, eliminar y buscar los datos del empleado (crud)
 
 // valor de la hora? => salarioBasico / 188 (h/m)
 
- // db con el conocimiento que tenemos a dia de hoy
-let empleados = []
+// db con el conocimiento que tenemos a dia de hoy
+let empleados = [];
 
-function agregarEmpleado(nombreParam, salarioBasicoParam, generoParam, cedula){
+function agregarEmpleado(nombreParam, salarioBasicoParam, generoParam, cedula, edadParam){
     let empleado = {
         nombre: nombreParam,
         salarioBasico: salarioBasicoParam,
         genero: generoParam,
         cedula: cedula, 
         valorHora: salarioBasicoParam / 188,
+        edad: edadParam
     }
     empleados.push(empleado);
 }
 
-agregarEmpleado("Ana", 4500000, "Feminino", 123);
-agregarEmpleado("Mayk", 2500000, "Masculino", 456);
-agregarEmpleado("Fred", 4500000, "Masculino", 789);
-agregarEmpleado("Dayana", 7500000, "Feminino", 999);
+agregarEmpleado("Ana", 4500000, "Feminino", 123, 20);
+agregarEmpleado("Mayk", 2500000, "Masculino", 456, 22);
+agregarEmpleado("Fred", 4500000, "Masculino", 789, 25);
+agregarEmpleado("Dayana", 7500000, "Feminino", 999, 22);
+agregarEmpleado("Luisa", 3500000, "Feminino", 888, 23);
+agregarEmpleado("Juan", 1500000, "Masculino", 777, 40);
+agregarEmpleado("Pedro", 2500000, "Masculino", 666, 52);
+agregarEmpleado("Maria", 3500000, "Feminino", 555, 38);
+agregarEmpleado("Jose", 4500000, "Masculino", 444, 61);
+agregarEmpleado("Jorge", 5500000, "Masculino", 333, 29);
+agregarEmpleado("Luis", 6500000, "Masculino", 222, 47);
+agregarEmpleado("Luisa", 7500000, "Feminino", 111, 18);
 
-console.log({empleados});
+// console.log({empleados});
+// console.log(empleados.length);
+
+// crear funcion que muestre todos los empleados de la empresa
+function mostrarEmpleados(){
+    for(let contador = 0; contador < empleados.length; contador = contador + 1){
+        console.log(
+            `Nombre: ${empleados[contador].nombre},
+            Salario Basico: ${empleados[contador].salarioBasico},
+            Genero: ${empleados[contador].genero},
+            Cedula: ${empleados[contador].cedula},
+            Valor hora: ${empleados[contador].valorHora},
+            Edad: ${empleados[contador].edad}
+            `)
+    }
+}
+
+// mostrarEmpleados();
+
+// buscar y mostrar un empleado por su cedula, buscar jorge con cedula = 333
+// function buscarEmpleado (cedula){
+//     for(let i = 0; i < empleados.length; i++){
+//         if(cedula === empleados[i].cedula){
+//             console.log(
+//                 `Nombre: ${empleados[i].nombre},
+//                 Salario Basico: ${empleados[i].salarioBasico},
+//                 Genero: ${empleados[i].genero},
+//                 Cedula: ${empleados[i].cedula},
+//                 Valor hora: ${empleados[i].valorHora},
+//                 Edad: ${empleados[i].edad}
+//             `)
+//         }else{
+//             console.log("El empleado buscado no se encuentra en la DB");
+//         }
+//     }
+// }
+
+// buscarEmpleado(890097890890);
+
+// le cambiemos la edad, porque jorge cumplio años, modificar la funcion para que retorne
+/**
+ * Funcion que busca un empleado en la DB por su cedula
+ * @param {number} cedula - cedula del empleado
+ * @returns {object} Devuelve un empleado
+ */
+function buscarEmpleado (cedula){
+    for(let i = 0; i < empleados.length; i++){
+        if(cedula === empleados[i].cedula){
+            return empleados[i];
+        }
+    }
+    return null;
+}
+
+let empleadoBuscado = buscarEmpleado(333);
+if(empleadoBuscado != null){
+    console.log(`El empleado encontrado es: ${empleadoBuscado}, y su edad es ${empleadoBuscado.edad}`);
+}else{
+    console.log("El empleado buscado no se encuentra en la DB");
+}
+
+
+
+
+
