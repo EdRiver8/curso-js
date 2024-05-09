@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página Principal</title>
+    <style>
+      body {
+        transition: background-color 0.5s ease;
+      }
+      body:hover {
+        background-color: lightblue;
+      }
+    </style>
   </head>
   <body>
     <a href="auxiliar.html">Ir a la página auxiliar</a>
@@ -16,6 +24,16 @@
 
     <!-- JS normalmente se incluye al final del body -->
     <!-- agrega funcionalidad a las paginas -->
+
+    <!-- agregar boton para que al darle click, se ejecute una funcion que muestre un alert con un mensaje -->
+    <button onclick="alert('Hola mundo')">Click me</button>
+    <p id="mensajae"></p>
+
+    <!-- en este caso para cambiar el color de fondo lo podemos hacer con css o js -->
+    <h2 id="cambiarFondo">
+      Pasa el puntero del mouse sobre mi y observa lo que pasas!
+    </h2>
+
     <!-- <script>
       let nombreDeDanny = "Danny"; // usamos camelCase
       var apellidoDeCamilo; // simplemente se declaro
@@ -76,6 +94,6 @@
       } -->
 
     <!-- </script> -->
-    <script src="js/6-clase-funciones.js"></script>
+    <script src="js/3-clase-switch.js"></script>
   </body>
 </html>

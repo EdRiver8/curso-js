@@ -1,4 +1,3 @@
-
 /*
     Los ciclos tambien conocidos como bucles o loops, son estructuras de control que permiten ejecutar 
     un bloque de código de manera repetitiva hasta que se cumpla una condición específica.
@@ -68,33 +67,31 @@
 // console.log(10);
 
 // lo optimo seria implementar un bucle
-for( let contador = 0; contador <= 10; contador = contador + 1){
-    console.log(contador);
+for (let contador = 0; contador <= 10; contador = contador + 1) {
+  console.log(contador);
 }
 
-
 // contador = 0, 1, 2, 3, 4
-// 0 <= 10 ? true, 1 <= 10 ? true, 2 <= 10 ? true, 3 <= 10 ? true 
+// 0 <= 10 ? true, 1 <= 10 ? true, 2 <= 10 ? true, 3 <= 10 ? true
 // muestra(0), muestra(1), muestra(2), muestra(3)
 
-
-// contador = 10, 11 
+// contador = 10, 11
 // 10 <= 10 ? true, 11 <= 10 ? false
 // muestra(10)
 
 // continuar resto del codigo
 let contador2 = 0;
-while(contador2 <= 10){
-    console.log(contador2);
-    contador2 = contador2 + 1;
+while (contador2 <= 10) {
+  console.log(contador2);
+  contador2 = contador2 + 1;
 }
 
 let contador3 = 0;
-do{
-    console.log(contador3);
-    contador3 = contador3 + 1;
-}while(contador3 <= 10)
+do {
+  console.log(contador3);
+  contador3 = contador3 + 1;
+} while (contador3 <= 10);
 
-
-
-
+function generarNumeroAleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

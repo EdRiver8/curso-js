@@ -77,16 +77,23 @@
 // db con el conocimiento que tenemos a dia de hoy
 let empleados = [];
 
-function agregarEmpleado(nombreParam, salarioBasicoParam, generoParam, cedula, edadParam){
-    let empleado = {
-        nombre: nombreParam,
-        salarioBasico: salarioBasicoParam,
-        genero: generoParam,
-        cedula: cedula, 
-        valorHora: salarioBasicoParam / 188,
-        edad: edadParam
-    }
-    empleados.push(empleado);
+function agregarEmpleado(
+  nombreParam,
+  salarioBasicoParam,
+  generoParam,
+  cedula,
+  edadParam
+) {
+  let empleado = {
+    indice: empleados.length + 1,
+    nombre: nombreParam,
+    salarioBasico: salarioBasicoParam,
+    genero: generoParam,
+    cedula: cedula,
+    valorHora: salarioBasicoParam / 188,
+    edad: edadParam,
+  };
+  empleados.push(empleado);
 }
 
 agregarEmpleado("Ana", 4500000, "Feminino", 123, 20);
@@ -106,20 +113,23 @@ agregarEmpleado("Luisa", 7500000, "Feminino", 111, 18);
 // console.log(empleados.length);
 
 // crear funcion que muestre todos los empleados de la empresa
-function mostrarEmpleados(){
-    for(let contador = 0; contador < empleados.length; contador = contador + 1){
-        console.log(
-            `Nombre: ${empleados[contador].nombre},
+function mostrarEmpleados() {
+  for (let contador = 0; contador < empleados.length; contador = contador + 1) {
+    console.log(
+      `Nombre: ${empleados[contador].nombre},
             Salario Basico: ${empleados[contador].salarioBasico},
             Genero: ${empleados[contador].genero},
             Cedula: ${empleados[contador].cedula},
             Valor hora: ${empleados[contador].valorHora},
             Edad: ${empleados[contador].edad}
-            `)
-    }
+            `
+    );
+  }
 }
 
-// mostrarEmpleados();
+mostrarEmpleados();
+
+console.log("--------------------------------------------------");
 
 // buscar y mostrar un empleado por su cedula, buscar jorge con cedula = 333
 // function buscarEmpleado (cedula){
@@ -147,23 +157,126 @@ function mostrarEmpleados(){
  * @param {number} cedula - cedula del empleado
  * @returns {object} Devuelve un empleado
  */
-function buscarEmpleado (cedula){
-    for(let i = 0; i < empleados.length; i++){
-        if(cedula === empleados[i].cedula){
-            return empleados[i];
-        }
+function buscarEmpleado(cedula) {
+  for (let i = 0; i < empleados.length; i++) {
+    if (cedula === empleados[i].cedula) {
+      return empleados[i];
     }
-    return null;
+  }
+  return null; // null pointer exception
 }
 
 let empleadoBuscado = buscarEmpleado(333);
-if(empleadoBuscado != null){
-    console.log(`El empleado encontrado es: ${empleadoBuscado}, y su edad es ${empleadoBuscado.edad}`);
-}else{
-    console.log("El empleado buscado no se encuentra en la DB");
+// if(empleadoBuscado != null){
+//     console.log(`El empleado encontrado es: ${empleadoBuscado}, y su edad es ${empleadoBuscado.edad}`);
+// }else{
+//     console.log("El empleado buscado no se encuentra en la DB");
+// }
+
+// u => update = actualizar un empleado
+// ir al vector y buscar al empleado por cc, recorrer la lista de empleados comparando la cedula de cada
+// empleado contra la cedula buscada, si lo encuentra actulizar la informacion sino lo encuentra
+// entonces retorna un null (vacio)
+
+// actualice nombre, edad, salario basico
+const actualizarEmpleado = function (cedula, nombre, salario, edad) {
+  let contador = 0;
+  while (contador < empleados.length) {
+    if (cedula == empleados[contador].cedula) {
+      empleados[contador].nombre = nombre;
+      empleados[contador].salarioBasico = salario;
+      empleados[contador].edad = edad;
+      return empleados[contador];
+    }
+    contador = contador + 1;
+  }
+  return null;
+};
+
+let empleadoActualizar = actualizarEmpleado(222, "Jairo", 8000000, 55);
+if (empleadoActualizar != null) {
+  console.log(`Se actualizo al empleado: ${empleadoActualizar}`);
+} else {
+  console.log("El empleado buscado por cc no se encuentra en la DB");
+}
+mostrarEmpleados();
+
+const actualizarEmpleado2 = function (cedula, nombre, salario, edad) {
+  // let empleadoBuscado = buscarEmpleado(cedula);
+  if (buscarEmpleado(cedula) != null) {
+    // actualizar el empleado
+    return true; // retornar empleado o bool
+  }
+  return false;
+};
+if (actualizarEmpleado2(222, "Jairo", 8000000, 55)) {
+  console.log(`Se actualizo al empleado: ${empleadoActualizar}`);
+} else {
+  console.log("El empleado buscado por cc no se encuentra en la DB");
 }
 
+console.log("--------------------------------------------------");
 
+// d => delete, buscar un empleado y eliminarlo, pero debe retornar el empleado eliminado
+// function eliminarEmpleado (cedula){
+//     for(let i = 0; i < empleados.length; i++){
+//         if(cedula === empleados[i].cedula){
+//             return empleados.splice(i, 1);
+//         }
+//     }
+//     return null;
+// }
 
+// let empleadoAEliminar = eliminarEmpleado(222);
+// console.log(empleadoAEliminar);
 
+// mostrarEmpleados();
 
+// elimar empleado haciendo uso del buscarEmpleado(cedula)
+function eliminarEmpleado2(cedula) {
+  let empleadoBuscado = buscarEmpleado(cedula);
+  if (empleadoBuscado != null) {
+    let indice = empleados.indexOf(empleadoBuscado);
+    return empleados.splice(indice, 1);
+  }
+  return null;
+}
+
+let empleadoAEliminar2 = eliminarEmpleado2(222);
+console.log(empleadoAEliminar2);
+
+mostrarEmpleados();
+
+// la lista de las x
+/**
+ * Funcion que retorna la lista de x
+ * @returns {array} - lista de x
+ */
+function listaEmpleadosMasculinos() {
+  let listaEmpleadosMasculinos = [];
+  for (let i = 0; i < empleados.length; i++) {
+    if (empleados[i].genero !== "Feminino") {
+      listaEmpleadosMasculinos.push(empleados[i]);
+    }
+  }
+  return listaEmpleadosMasculinos;
+}
+
+console.log(listaEmpleadosMasculinos());
+
+// crear una funcion (filtro) que muestre a las Luisas
+function luisas() {
+  let luisas = [];
+  for (let empleado of empleados) {
+    if (empleado.nombre === "Luisa") {
+      luisas.push(empleado);
+    }
+  }
+  return luisas;
+}
+
+console.log(luisas()); // callback = una funcion que por dentro llama a otra funcion
+
+// una funcion que muestre a los empleados que ganen mas de 3 millones
+
+// una funcion que calcule el promedio de la edad de los empleados

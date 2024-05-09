@@ -1,0 +1,15 @@
+/js/8-clase-logica-bool.js
+/js/9-clase-eventos.js
+/js/6.1-funciones-autoinvocadas.js
+/js/6.2-clase-desestructuracion.js
+/js/7-clase-ciclos.js
+/js/10-clase-poo-clases.js
+/js/clase-modulo.js
+/js/11-clase-poo-herencia.js
+/js/12-clase-poo-encapsulamiento.js
+/js/13-clase-modulo.js
+/js/13.1-clase-modulo.js
+# ignorar toda la carpeta javaplan con todos sus archivos
+/javaplan/
+/ui-taller.html
+
