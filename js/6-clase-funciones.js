@@ -77,7 +77,7 @@
 // db con el conocimiento que tenemos a dia de hoy
 let empleados = [];
 
-function agregarEmpleado(
+export function agregarEmpleado(
   nombreParam,
   salarioBasicoParam,
   generoParam,
@@ -113,7 +113,7 @@ agregarEmpleado("Luisa", 7500000, "Feminino", 111, 18);
 // console.log(empleados.length);
 
 // crear funcion que muestre todos los empleados de la empresa
-function mostrarEmpleados() {
+export function mostrarEmpleados() {
   for (let contador = 0; contador < empleados.length; contador = contador + 1) {
     console.log(
       `Nombre: ${empleados[contador].nombre},
@@ -201,7 +201,7 @@ if (empleadoActualizar != null) {
 }
 mostrarEmpleados();
 
-const actualizarEmpleado2 = function (cedula, nombre, salario, edad) {
+const actualizarEmpleado2 = function (cedula) {
   // let empleadoBuscado = buscarEmpleado(cedula);
   if (buscarEmpleado(cedula) != null) {
     // actualizar el empleado

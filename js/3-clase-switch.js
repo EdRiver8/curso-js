@@ -7,7 +7,7 @@
 //     default = escenario por defecto
 // }
 
-const personaje = "Princesa";
+const personaje = "Princesa"; // se evalua escenario personaje = Princesa
 switch (personaje) {
   case "Mario":
     console.log("puede saltar alto");
