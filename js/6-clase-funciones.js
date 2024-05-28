@@ -77,7 +77,7 @@
 // db con el conocimiento que tenemos a dia de hoy
 let empleados = [];
 
-export function agregarEmpleado(
+function agregarEmpleado(
   nombreParam,
   salarioBasicoParam,
   generoParam,

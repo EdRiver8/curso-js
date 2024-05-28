@@ -28,15 +28,15 @@
     Ciclo while: Este ciclo se utiliza para ejecutar un bloque de código mientras se cumpla una condición específica.
 
 
-
-    while (condición) {
+    let vidas = 3; inicializacion de la variable de control
+    while (vidas > 0 (concondición)) {
         // Bloque de código a ejecutar
         // despierto
         // levantarse
         // comer
         // ir al baño...
 
-        -- murio
+        -- vidas
     }
     La condición se evalúa antes de cada iteración del ciclo y se utiliza para determinar si el ciclo debe continuar o no.
 
