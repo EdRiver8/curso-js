@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* body {
+        background-color: black;
+      } */
+
+      #titulo1 {
+        color: blue;
+      }
+
+      .titulo {
+        color: yellow;
+      }
+
+      /* .titulo2 {
+        color: aliceblue;
+      } */
+    </style>
+  </head>
+  <input>
+    <!-- uso de la funcion desde atributo en el tag -->
+    <h1 id="titulo1" class="titulo" onclick="contadorClicks()">
+      Hola soy un Titulo 1
+    </h1>
+    <h2 id="titulo" class="titulo2">Hola soy un Titulo 2</h2>
+    <input type="text" onfocus="contadorOnFocus()">
+    <div class="cajaContenedora"></div>
+    <script>
+      let titulo = document.title;
+      document.title = "Hola";
+      console.log(titulo);
+
+      // obtenemos el tag
+      let titulo1Tag = document.getElementById("titulo1");
+      // obtenemos el valor que tiene el tag
+      let titulo1Text = document.getElementById("titulo1").innerHTML;
+      console.log(titulo1Text);
+      let otroTexto = "El texto de Julian";
+
+      // modifiquemos el valor del tag para actualizarlo en el html
+      titulo1Tag.innerHTML = otroTexto;
+
+      let contador = 0;
+
+      function contadorClicks() {
+        contador++;
+        titulo1Tag.innerHTML = `Otro texto con el click numero ${contador}`;
+        // modificar el estilo
+        titulo1Tag.style.color = "green"; // css en linea
+        // console.log(contador);
+      }
+
+      function contadorOnFocus() {
+        contador++;
+        console.log(contador);
+      }
+    </script>
+  </body>
+</html>

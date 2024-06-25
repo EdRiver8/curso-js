@@ -72,3 +72,4 @@ let persona = {
 
 console.log(persona.respirar);
 console.log(persona.caminarCaminadora(1000, 2000));
+console.log(persona.colorCabello);
