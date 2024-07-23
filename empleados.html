@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empleados</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f7f6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .formulario {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .formulario input,
+      .formulario select,
+      .formulario button {
+        flex: 1;
+        min-width: calc(50% - 20px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .formulario button {
+        background-color: #28a745;
+        color: white;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .formulario button:hover {
+        background-color: #218838;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      @media (max-width: 768px) {
+        .formulario input,
+        .formulario select,
+        .formulario button {
+          min-width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gestion de Empleados</h1>
+      <div class="formulario">
+        <input type="text" placeholder="Nombre" id="nombre" />
+        <select name="" id="genero">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+        <input type="number" placeholder="Cedula" id="cedula" />
+        <input type="number" placeholder="Edad" id="edad" />
+        <input type="number" placeholder="Salario Basico" id="salarioBasico" />
+        <button onclick="agregarEmpleadoUI()">Agregar</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th># Empleado</th>
+            <th>Nombre</th>
+            <th>Genero</th>
+            <th>Cedula</th>
+            <th>Edad</th>
+            <th>Valor Hora</th>
+            <th>Salario Basico</th>
+          </tr>
+        </thead>
+        <tbody id="tablaEmpleados">
+          <tr>
+            <td>1</td>
+            <td>Julian</td>
+            <td>Masculino</td>
+            <td>1</td>
+            <td>22</td>
+            <td>100</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Oskar</td>
+            <td>Masculino</td>
+            <td>2</td>
+            <td>25</td>
+            <td>600</td>
+            <td>12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="js/6.3-clase-modulo-empleados.js"></script>
+  </body>
+</html>
