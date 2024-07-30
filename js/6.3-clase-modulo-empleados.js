@@ -9,31 +9,19 @@ function agregarEmpleado(
   cedula,
   edadParam
 ) {
+  let salarioBasico = parseFloat(salarioBasicoParam); // define efectivamente una variable como decimal
+  let edad = parseInt(edadParam); // garantizamos que la edad sea un entero
   let empleado = {
     indice: empleados.length + 1,
     nombre: nombreParam,
-    salarioBasico: salarioBasicoParam,
+    salarioBasico: salarioBasico,
     genero: generoParam,
     cedula: cedula,
-    valorHora: salarioBasicoParam / 188,
-    edad: edadParam,
-  };
-  empleados.push(empleado);
-}
-
-// Esta funcion aplica el Leer del crud = Read
-function mostrarEmpleados() {
-  for (let contador = 0; contador < empleados.length; contador = contador + 1) {
-    alert(
-      `Nombre: ${empleados[contador].nombre},
-                Salario Basico: ${empleados[contador].salarioBasico},
-                Genero: ${empleados[contador].genero},
-                Cedula: ${empleados[contador].cedula},
-                Valor hora: ${empleados[contador].valorHora},
-                Edad: ${empleados[contador].edad}
-                `
-    );
-  }
+    valorHora: salarioBasico / 188,
+    edad: edad,
+  }; // construye un objeto de tipo empleado
+  empleados.push(empleado); // lo agrega al final
+  actualizarTabla(); // actualizamos la vista
 }
 
 function agregarEmpleadoUI() {
@@ -60,4 +48,34 @@ function limpiarFormulario() {
   document.getElementById("salarioBasico").value = "";
 }
 
-function actualizarTabla() {}
+function actualizarTabla() {
+  const tbody = document.getElementById("tablaEmpleados");
+  tbody.innerHTML = "";
+  // para cada empleado en la lista de empleados haga => programacion funcional
+  empleados.forEach((empleado) => {
+    let fila = document.createElement("tr"); // creando elemento de tipo fila
+    fila.innerHTML =
+      "<td>" +
+      empleado.indice +
+      "</td>" +
+      "<td>" +
+      empleado.nombre +
+      "</td>" +
+      "<td>" +
+      empleado.genero +
+      "</td>" +
+      "<td>" +
+      empleado.cedula +
+      "</td>" +
+      "<td>" +
+      empleado.edad +
+      "</td>" +
+      "<td>" +
+      empleado.valorHora.toFixed(2) +
+      "</td>" +
+      "<td>" +
+      empleado.salarioBasico +
+      "</td>";
+    tbody.appendChild(fila);
+  });
+}
