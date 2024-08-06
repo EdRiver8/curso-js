@@ -1,6 +1,16 @@
 // El modulo inicialmente, esta moqueado para ejecutar el Crear y Leer del Crud (Create, read, update, delete)
 let empleados = []; // db para almecenar la informacion
 
+document.addEventListener("DOMContentLoaded", function () {
+  // se trae la data del localstorage del navegador
+  const empleadosAlmacenados = localStorage.getItem("empleados");
+  // si existen datos, los convirte a objetos js y llama la funcion para mostrar en la tabla
+  if (empleadosAlmacenados != null) {
+    empleados = JSON.parse(empleadosAlmacenados); // para recibir data
+    actualizarTabla();
+  }
+});
+
 // Esta funcion aplica el Crear del crud = Create
 function agregarEmpleado(
   nombreParam,
@@ -21,6 +31,7 @@ function agregarEmpleado(
     edad: edad,
   }; // construye un objeto de tipo empleado
   empleados.push(empleado); // lo agrega al final
+  localStorage.setItem("empleados", JSON.stringify(empleados)); // para enviar data
   actualizarTabla(); // actualizamos la vista
 }
 
@@ -38,12 +49,13 @@ function agregarEmpleadoUI() {
   // limpiamos los campos del formulario
   limpiarFormulario();
 
-  console.log(empleados);
+  // console.log(empleados);
 }
 
 function limpiarFormulario() {
   document.getElementById("nombre").value = "";
-  document.getElementById("cedula").value = "";
+  document.getElementById("nombre").value = "";
+  document.getElementById("genero").value = "Masculino";
   document.getElementById("edad").value = "";
   document.getElementById("salarioBasico").value = "";
 }
@@ -75,7 +87,10 @@ function actualizarTabla() {
       "</td>" +
       "<td>" +
       empleado.salarioBasico +
-      "</td>";
+      "</td>" +
+      "<td>" +
+      "<button class='actualizar' onclick='actualizarEmpleado()'>Actualizar</button>" +
+      "<button class='eliminar' onclick='eliminarEmpleado()'>Eliminar</button>";
     tbody.appendChild(fila);
   });
 }
