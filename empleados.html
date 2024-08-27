@@ -163,6 +163,46 @@
           margin-bottom: 10px;
         }
       }
+
+      .eliminar-todo-container {
+        position: relative; /* Necesario para posicionar la advertencia absolutamente */
+        margin-top: 20px;
+        width: 100%; /* Ocupa el ancho completo del contenedor */
+        text-align: center;
+      }
+
+      .eliminar-todo {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 15px 20px; /* Aumentar el padding para mejorar la apariencia */
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%; /* Hacer que el botón ocupe el ancho completo */
+        box-sizing: border-box; /* Incluye padding en el ancho total */
+      }
+
+      .advertencia {
+        display: none; /* Ocultar advertencia por defecto */
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        font-weight: bold;
+        position: absolute;
+        top: 100%; /* Posicionar justo debajo del botón */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff; /* Fondo blanco para contraste */
+        padding: 5px;
+        border: 1px solid red;
+        border-radius: 4px;
+        z-index: 10; /* Asegura que el mensaje se muestre encima de otros elementos */
+      }
+
+      /* Mostrar la advertencia solo cuando el mouse pase sobre el botón */
+      .eliminar-todo-container:hover .advertencia {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -178,8 +218,11 @@
         <input type="number" placeholder="Cédula" id="cedula" />
         <input type="number" placeholder="Edad" id="edad" />
         <input type="number" placeholder="Salario Básico" id="salarioBasico" />
-        <button onclick="agregarEmpleadoUI()">
+        <button onclick="agregarEmpleadoUI()" id="btn-agregar">
           <i class="fas fa-user-plus"></i> Agregar
+        </button>
+        <button class="eliminar-todo" onclick="eliminarTodo()">
+          Eliminar Todo
         </button>
       </div>
       <table>
